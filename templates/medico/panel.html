@@ -1,0 +1,78 @@
+{% extends "base.html" %}
+{% block title %}Panel del Médico{% endblock %}
+
+{% block content %}
+
+<!-- ================= DATOS DEL MÉDICO ================= -->
+<div class="card shadow-sm mb-4">
+    <div class="card-body">
+        <h4 class="card-title mb-3">
+            👨‍⚕️ Bienvenido Dr(a). {{ medico.user.get_full_name }}
+        </h4>
+
+        <div class="row">
+            <div class="col-md-6">
+                <p>
+                    <strong>Especialidad:</strong>
+                    {{ medico.especialidad }}
+                </p>
+            </div>
+            <div class="col-md-6">
+                <p>
+                    <strong>Cédula profesional:</strong>
+                    {{ medico.cedula_profesional }}
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ================= GESTIÓN CLÍNICA ================= -->
+<h4 class="mb-3">Gestión Clínica</h4>
+
+<div class="row g-4 mb-4">
+
+    <!-- PACIENTES -->
+    <div class="col-md-6 col-lg-4">
+        <div class="card h-100 shadow-sm">
+            <div class="card-body text-center">
+                <h5 class="card-title">👤 Pacientes</h5>
+                <p class="card-text">
+                    Consultar y administrar pacientes
+                </p>
+                <a href="{% url 'lista_pacientes' %}" class="btn btn-primary">
+                    Consultar pacientes
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- REGISTRAR PACIENTE -->
+    <div class="col-md-6 col-lg-4">
+        <div class="card h-100 shadow-sm">
+            <div class="card-body text-center">
+                <h5 class="card-title">➕ Nuevo Paciente</h5>
+                <p class="card-text">
+                    Registrar un nuevo paciente
+                </p>
+                <a href="{% url 'crear_paciente' %}" class="btn btn-success">
+                    Registrar paciente
+                </a>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<!-- ================= SESIÓN ================= -->
+<div class="card shadow-sm">
+    <div class="card-body text-end">
+        <a href="{% url 'logout' %}" class="btn btn-outline-danger">
+            🚪 Cerrar sesión
+        </a>
+    </div>
+</div>
+
+{% endblock %}
+
+

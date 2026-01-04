@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Confirmar borrado</title>
+</head>
+<body>
+
+<h2>⚠️ Confirmar eliminación de diagnóstico</h2>
+
+<p>
+    <strong>Paciente:</strong>
+    {{ diagnostico.expediente.paciente.nombre }}
+    {{ diagnostico.expediente.paciente.apellidos }}
+</p>
+
+<p>
+    <strong>Diagnóstico:</strong><br>
+    {{ diagnostico.descripcion }}
+</p>
+
+<p style="color:red;">
+    Esta acción eliminará también las recetas asociadas.
+</p>
+
+<form method="post">
+    {% csrf_token %}
+    <button type="submit">Sí, borrar diagnóstico</button>
+</form>
+
+<p>
+    <a href="{% url 'detalle_paciente' diagnostico.expediente.paciente.id %}">
+        Cancelar
+    </a>
+</p>
+
+</body>
+</html>

@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+{% block title %}Registrar Paciente{% endblock %}
+
+{% block content %}
+
+<h3 class="mb-4">➕ Registrar Paciente</h3>
+
+<div class="card shadow-sm">
+    <div class="card-body">
+
+        <form method="post">
+            {% csrf_token %}
+
+            <div class="row">
+                <div class="col-md-6 mb-3">
+                    {{ form.nombre.label_tag }}
+                    {{ form.nombre }}
+                </div>
+
+                <div class="col-md-6 mb-3">
+                    {{ form.apellidos.label_tag }}
+                    {{ form.apellidos }}
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6 mb-3">
+                    {{ form.fecha_nacimiento.label_tag }}
+                    {{ form.fecha_nacimiento }}
+                </div>
+
+                <div class="col-md-6 mb-3">
+                    {{ form.sexo.label_tag }}
+                    {{ form.sexo }}
+                </div>
+            </div>
+
+            <div class="d-flex justify-content-end gap-2 mt-3">
+                <a href="{% url 'lista_pacientes' %}" class="btn btn-secondary">
+                    Cancelar
+                </a>
+
+                <button type="submit" class="btn btn-success">
+                    Guardar paciente
+                </button>
+            </div>
+        </form>
+
+    </div>
+</div>
+
+{% endblock %}

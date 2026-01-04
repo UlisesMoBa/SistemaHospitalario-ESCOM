@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+{% block title %}Nueva Receta{% endblock %}
+
+{% block content %}
+
+<div class="row justify-content-center">
+    <div class="col-md-8">
+
+        <div class="card shadow-sm mb-4">
+            <div class="card-body">
+
+                <h4 class="mb-3">💊 Nueva Receta Médica</h4>
+
+                <!-- Datos del paciente -->
+                <div class="mb-3">
+                    <p class="mb-1">
+                        <strong>Paciente:</strong>
+                        {{ diagnostico.expediente.paciente.nombre }}
+                        {{ diagnostico.expediente.paciente.apellidos }}
+                    </p>
+
+                    <p class="mb-1">
+                        <strong>Diagnóstico:</strong><br>
+                        {{ diagnostico.descripcion }}
+                    </p>
+                </div>
+
+                <hr>
+
+                <!-- Formulario -->
+                <form method="post">
+                    {% csrf_token %}
+
+                    <div class="mb-3">
+                        {{ form.medicamento.label_tag }}
+                        {{ form.medicamento }}
+                    </div>
+
+                    <div class="mb-3">
+                        {{ form.indicaciones.label_tag }}
+                        {{ form.indicaciones }}
+                    </div>
+
+                    <div class="d-flex justify-content-end gap-2">
+                        <a href="{% url 'detalle_paciente' diagnostico.expediente.paciente.id %}"
+                           class="btn btn-secondary">
+                            Cancelar
+                        </a>
+
+                        <button type="submit" class="btn btn-success">
+                            Guardar receta
+                        </button>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+
+    </div>
+</div>
+
+{% endblock %}
+
