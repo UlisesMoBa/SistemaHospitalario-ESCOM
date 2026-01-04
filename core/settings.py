@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'hospital',
 ]
 
 MIDDLEWARE = [
@@ -74,11 +75,19 @@ WSGI_APPLICATION = 'core.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
+        'ENGINE': 'mssql',
+        'NAME': 'GestionHospitalaria',
+        'USER': '',
+        'PASSWORD': '',
+        'HOST': r'LAPTOP-J9KH2E0H\MSSQLSAE',  # Tu instancia exacta
+        'PORT': '',
+        'OPTIONS': {
+            'driver': 'ODBC Driver 17 for SQL Server',
+            # Esta línea activa la autenticación de Windows
+            'extra_params': 'Trusted_Connection=yes',
+        },
+    },
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/5.2/ref/settings/#auth-password-validators
