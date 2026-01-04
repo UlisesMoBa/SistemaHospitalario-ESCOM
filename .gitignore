@@ -1,0 +1,10 @@
+# Python y Django
+*.pyc
+__pycache__/
+db.sqlite3
+/venv
+.env
+
+# Archivos de sistema
+.DS_Store
+Thumbs.db
